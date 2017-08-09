@@ -267,6 +267,156 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/09/甲级1055/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/ashin.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CoolMayday">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/09/甲级1055/" itemprop="url">甲级1055</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T23:08:54+08:00">
+                2017-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pat/" itemprop="url" rel="index">
+                    <span itemprop="name">pat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目:</p>
+<ol>
+<li>The World’s Richest (25)<br>时间限制<br>400 ms<br>内存限制<br>128000 kB<br>代码长度限制<br>16000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue</li>
+</ol>
+<p>Forbes magazine publishes every year its list of billionaires based on the annual ranking of the world’s wealthiest people. Now you are supposed to simulate this job, but concentrate only on the people in a certain range of ages. That is, given the net worths of N people, you must find the M richest people in a given range of their ages.</p>
+<p>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains 2 positive integers: N (&lt;=105) - the total number of people, and K (&lt;=103) - the number of queries. Then N lines follow, each contains the name (string of no more than 8 characters without space), age (integer in (0, 200]), and the net worth (integer in [-106, 106]) of a person. Finally there are K lines of queries, each contains three positive integers: M (&lt;= 100) - the maximum number of outputs, and [Amin, Amax] which are the range of ages. All the numbers in a line are separated by a space.</p>
+<p>Output Specification:</p>
+<p>For each query, first print in a line “Case #X:” where X is the query number starting from 1. Then output the M richest people with their ages in the range [Amin, Amax]. Each person’s information occupies a line, in the format</p>
+<p>Name Age Net_Worth</p>
+<p>The outputs must be in non-increasing order of the net worths. In case there are equal worths, it must be in non-decreasing order of the ages. If both worths and ages are the same, then the output must be in non-decreasing alphabetical order of the names. It is guaranteed that there is no two persons share all the same of the three pieces of information. In case no one is found, output “None”.</p>
+<p>Sample Input:</p>
+<p>12 4<br>Zoe_Bill 35 2333<br>Bob_Volk 24 5888<br>Anny_Cin 95 999999<br>Williams 30 -22<br>Cindy 76 76000<br>Alice 18 88888<br>Joe_Mike 32 3222<br>Michael 5 300000<br>Rosemary 40 5888<br>Dobby 24 5888<br>Billy 24 5888<br>Nobody 5 0<br>4 15 45<br>4 30 35<br>4 5 95<br>1 45 50</p>
+<p>Sample Output:</p>
+<p>Case #1:<br>Alice 18 88888<br>Billy 24 5888<br>Bob_Volk 24 5888<br>Dobby 24 5888<br>Case #2:<br>Joe_Mike 32 3222<br>Zoe_Bill 35 2333<br>Williams 30 -22<br>Case #3:<br>Anny_Cin 95 999999<br>Michael 5 300000<br>Alice 18 88888<br>Cindy 76 76000<br>Case #4:<br>None</p>
+<p>题解:<br>这道题还是考察结构体排序,另外就是输出前n个符合要求有点费脑.<br>看的上机指南上题解用了一个valid[]保存每个年龄的前一百名即筛选掉不可能的输出.这样最多可以省略9/10时间,最少就没有改变.<br>具体一点就是用valid[]保存所有可能的输出前提是所有人已经排序.用age[ps[i].age]验证当前年龄的人数.(ps[i]是结构体)<br>至于不用这个技巧会不会超时,我会抽空验证一下然后更新0.0</p>
+<p>以下是代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int age[100010] = &#123;0&#125;;</div><div class="line">struct Person</div><div class="line">&#123;</div><div class="line">	int age,worth;</div><div class="line">	char name[15];</div><div class="line">&#125;ps[100010],valid[100010];</div><div class="line"></div><div class="line">int cmp(Person a,Person b)</div><div class="line">&#123;</div><div class="line">	if(a.worth != b.worth)</div><div class="line">		return a.worth &gt; b.worth;</div><div class="line">	else if(a.age != b.age)</div><div class="line">		return a.age &lt; b.age;</div><div class="line">	else</div><div class="line">		return strcmp(a.name,b.name) &lt; 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char const *argv[])</div><div class="line">&#123;</div><div class="line">	int n,k;</div><div class="line">	scanf(&quot;%d %d&quot;,&amp;n,&amp;k);</div><div class="line">	for (int i = 0; i &lt; n; ++i)</div><div class="line">	&#123;</div><div class="line">		scanf(&quot;%s%d%d&quot;,ps[i].name,&amp;ps[i].age,&amp;ps[i].worth);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">    sort(ps,ps+n,cmp);</div><div class="line">	int validnum = 0;</div><div class="line">	for (int i = 0; i &lt; n; ++i)</div><div class="line">	&#123;</div><div class="line">		if(age[ps[i].age] &lt; 100)</div><div class="line">			&#123;</div><div class="line">				valid[validnum++] = ps[i];</div><div class="line">				age[ps[i].age]++;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	int m,agel,ager;</div><div class="line">	for (int i = 1; i &lt;= k; ++i)</div><div class="line">	&#123;</div><div class="line">		scanf(&quot;%d %d %d&quot;,&amp;m,&amp;agel,&amp;ager);</div><div class="line">		printf(&quot;Case #%d:\n&quot;,i);</div><div class="line">        int printnum = 0;</div><div class="line">        for (int j = 0; j &lt; validnum &amp;&amp; printnum &lt; m; ++j)</div><div class="line">        &#123;</div><div class="line">        	if(valid[j].age &gt;= agel &amp;&amp; valid[j].age &lt;= ager)</div><div class="line">        	&#123;</div><div class="line">        		printf(&quot;%s %d %d\n&quot;,valid[j].name,valid[j].age,valid[j].worth);</div><div class="line">        		printnum++;</div><div class="line">        	&#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if(printnum == 0)</div><div class="line">        	printf(&quot;None\n&quot;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/甲级1062/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -866,7 +1016,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -888,7 +1038,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
