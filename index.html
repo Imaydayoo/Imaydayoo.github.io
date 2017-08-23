@@ -267,6 +267,154 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/23/甲级1047/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/ashin.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CoolMayday">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/23/甲级1047/" itemprop="url">甲级1047</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T22:39:26+08:00">
+                2017-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pat/" itemprop="url" rel="index">
+                    <span itemprop="name">pat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目:</p>
+<ol>
+<li>Student List for Course (25)<br>时间限制<br>400 ms<br>内存限制<br>64000 kB<br>代码长度限制<br>16000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue</li>
+</ol>
+<p>Zhejiang University has 40000 students and provides 2500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses.</p>
+<p>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains 2 numbers: N (&lt;=40000), the total number of students, and K (&lt;=2500), the total number of courses. Then N lines follow, each contains a student’s name (3 capital English letters plus a one-digit number), a positive number C (&lt;=20) which is the number of courses that this student has registered, and then followed by C course numbers. For the sake of simplicity, the courses are numbered from 1 to K.</p>
+<p>Output Specification:</p>
+<p>For each test case, print the student name lists of all the courses in increasing order of the course numbers. For each course, first print in one line the course number and the number of registered students, separated by a space. Then output the students’ names in alphabetical order. Each name occupies a line.<br>Sample Input:</p>
+<p>10 5<br>ZOE1 2 4 5<br>ANN0 3 5 2 1<br>BOB5 5 3 4 2 1 5<br>JOE4 1 2<br>JAY9 4 1 2 5 4<br>FRA8 3 4 2 5<br>DON2 2 4 5<br>AMY7 1 5<br>KAT3 3 5 4 2<br>LOR6 4 2 4 1 5</p>
+<p>Sample Output:</p>
+<p>1 4<br>ANN0<br>BOB5<br>JAY9<br>LOR6<br>2 7<br>ANN0<br>BOB5<br>FRA8<br>JAY9<br>JOE4<br>KAT3<br>LOR6<br>3 1<br>BOB5<br>4 7<br>BOB5<br>DON2<br>FRA8<br>JAY9<br>KAT3<br>LOR6<br>ZOE1<br>5 9<br>AMY7<br>ANN0<br>BOB5<br>DON2<br>FRA8<br>JAY9<br>KAT3<br>LOR6<br>ZOE1</p>
+<p>题意描述:<br>给出n个学生,c门课,以及每个学生选课情况要求输出每个课程的选课学生名称</p>
+<p>本题的巧妙之处是 学生的姓名可以用i来代替,再与sname[i]对应,巧妙地避免了逆hash我的愚蠢的想法.<br>用course[i]的vector数组存储学生姓名.</p>
+<p>以下是代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">vector&lt;int&gt; course[2510];//course[i]表示一个课程的所有同学,跟二维数组类似.</div><div class="line"></div><div class="line">char sname[40010][5];//学生的姓名...很机智的用sname[i]就可以表示其姓名.我一开始还想用倒hash哈哈.</div><div class="line"></div><div class="line">bool cmp(int a, int b)</div><div class="line">&#123;</div><div class="line">	return strcmp(sname[a],sname[b]) &lt; 0;//字符串排序</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char const *argv[])</div><div class="line">&#123;</div><div class="line">	int n, c;</div><div class="line">	scanf(&quot;%d %d&quot;, &amp;n, &amp;c);</div><div class="line">	for (int i = 0; i &lt; n; ++i)</div><div class="line">	&#123;</div><div class="line">		int cnum;</div><div class="line">		scanf(&quot;%s %d&quot;, sname[i], &amp;cnum);</div><div class="line">		for (int j = 0; j &lt; cnum; ++j)</div><div class="line">		&#123;</div><div class="line">			int cname;</div><div class="line">			scanf(&quot;%d&quot;, &amp;cname);</div><div class="line">			course[cname].push_back(i);//把学生编号加入到课程里去.</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	for (int i = 1; i &lt;= c; ++i)</div><div class="line">	&#123;</div><div class="line">		printf(&quot;%d %d\n&quot;, i, course[i].size());</div><div class="line">		sort(course[i].begin(), course[i].end(),cmp);</div><div class="line">		for (int j = 0; j &lt; course[i].size(); ++j)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;%s\n&quot;,sname[course[i][j]]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/甲级1039/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1646,7 +1794,7 @@ return 0;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1668,7 +1816,7 @@ return 0;
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
